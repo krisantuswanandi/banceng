@@ -9,7 +9,7 @@ if (!player.name.value) {
   router.push("/")
 }
 
-const numbers = [
+const ranks = [
   "1",
   "2",
   "3",
@@ -26,11 +26,11 @@ const numbers = [
   "K",
 ]
 
-const faces = [
-  "S",
-  "D",
-  "C",
-  "H",
+const suits = [
+  Suit.Diamonds,
+  Suit.Clubs,
+  Suit.Hearts,
+  Suit.Spades,
 ]
 </script>
 
@@ -38,14 +38,14 @@ const faces = [
   <div>
     <NuxtLink to="/" class="text-sm text-blue underline">back to home</NuxtLink>
   </div>
-  <div style="margin-bottom: 16px">
+  <div class="mb-4">
     <span>Room #</span>
     <span class="font-bold">{{ id }}</span>
   </div>
   <RoomGame />
-  <div v-for="face in faces" class="flex gap-2 mt-2">
-    <div v-for="num in numbers">
-      <CardFace :num="num" :face="face" />
+  <div v-for="suit in suits" class="flex gap-2 mt-2">
+    <div v-for="rank in ranks">
+      <CardPokerCard :rank="rank" :suit="suit" />
     </div>
   </div>
 </template>

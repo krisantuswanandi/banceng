@@ -1,11 +1,11 @@
-enum Color {
-  Diamond,
-  Club,
-  Heart,
-  Spade,
+export enum Suit {
+  Diamonds,
+  Clubs,
+  Hearts,
+  Spades,
 }
 
-enum Num {
+export enum Rank {
   Three,
   Four,
   Five,
@@ -21,8 +21,8 @@ enum Num {
   Two,
 }
 
-export default class Card {
-  constructor(color: Color, number: Num) {}
+export class Card {
+  constructor(suit: Suit, rank: Rank) {}
 
   public print() {
     console.log("tes card");
