@@ -10,7 +10,7 @@ if (!player.name.value) {
 }
 
 const ranks = [
-  "1",
+  "A",
   "2",
   "3",
   "4",
@@ -20,7 +20,6 @@ const ranks = [
   "8",
   "9",
   "10",
-  "A",
   "J",
   "Q",
   "K",
