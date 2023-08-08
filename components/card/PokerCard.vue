@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Suit } from "@/utils/card"
+
 defineProps<{
   rank: string;
   suit: Suit;
