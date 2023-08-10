@@ -6,10 +6,29 @@ const route = useRoute()
 const player = usePlayer()
 
 const id = route.params.id
+const count = ref(0)
 
 if (!player.name.value) {
   router.push("/")
 }
+
+import Pusher from "pusher-js"
+import type { PresenceChannel } from "pusher-js";
+
+const config = useRuntimeConfig()
+const pusher = new Pusher(config.public.pusherApiKey, {
+  cluster: config.public.pusherCluster
+})
+const channelName = `presence-${id}`
+const channel = pusher.subscribe(channelName) as PresenceChannel
+function updateCount() { count.value = channel.members.count }
+channel.bind("pusher:subscription_succeeded", updateCount)
+channel.bind("pusher:member_added", updateCount)
+channel.bind("pusher:member_removed", updateCount)
+
+onUnmounted(() => {
+  pusher.unsubscribe(channelName)
+})
 
 const ranks = [
   "A",
@@ -53,8 +72,9 @@ const shuffledDeck = deck
       <NuxtLink to="/" class="text-sm text-blue underline">back to home</NuxtLink>
     </div>
     <div class="mb-4">
-      <span>Room #</span>
-      <span class="font-bold">{{ id }}</span>
+      <span>Room #{{ id }}</span>
+      <span v-if="count >= 4" class="font-bold text-green-500 ml-1">(Ready)</span>
+      <span v-else-if="count" class="font-bold text-red-500 ml-1">({{ count - 4 }})</span>
     </div>
     <RoomGame />
     <div class="grid grid-cols-13 gap-2 max-w-[930px]">
