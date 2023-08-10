@@ -21,16 +21,33 @@ function enterRoom(roomId: string) {
 
 const playerName = ref("")
 const roomId = ref("")
+
+useHead({
+  bodyAttrs: {
+    class: "bg"
+  }
+})
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-full flex-col">
-    <input v-model="playerName" class="border border-neutral-500 px-2 py-1 rounded" placeholder="player name..." />
-    <button @click="createRoom" class="bg-neutral-300 rounded px-2 py-1 mt-8">Create new room</button>
-    <span class="text-neutral-500 text-sm p-2">or</span>
-    <div>
-      <input v-model="roomId" class="border border-neutral-500 px-2 py-1 rounded w-32" placeholder="room id..." />
-      <button @click="joinRoom" class="bg-neutral-300 rounded px-2 py-1 ml-2">Join room</button>
+  <div class="flex justify-center items-center flex-col h-full">
+    <input v-model="playerName" class="px-3 py-2 border border-red-300 rounded-lg" placeholder="Player name" />
+    <button @click="createRoom" class="bg-red-500 rounded-lg px-4 py-2 mt-12 text-white">Create
+      room</button>
+    <span class="text-neutral-500 text-sm p-1">or</span>
+    <div class="relative">
+      <input v-model="roomId" class="px-3 py-2 border border-red-300 rounded-lg" placeholder="Room ID" />
+      <div class="absolute top-0 right-0 bottom-0 p-1.5">
+        <button @click="joinRoom" class="bg-red-500 h-full px-2 rounded-md text-white text-sm">Join
+          room</button>
+      </div>
     </div>
   </div>
 </template>
+
+<style>
+.bg {
+  background: url("@/assets/background.jpg");
+  --at-apply: bg-center bg-cover;
+}
+</style>
