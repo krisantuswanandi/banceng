@@ -47,7 +47,7 @@ useHead({
 
 <style>
 .bg {
-  background: url("@/assets/background.jpg");
+  background-image: url("@/assets/background.jpg");
   --at-apply: bg-center bg-cover;
 }
 </style>
