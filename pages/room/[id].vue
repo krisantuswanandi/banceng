@@ -12,24 +12,6 @@ if (!player.name.value) {
   router.push("/")
 }
 
-import Pusher from "pusher-js"
-import type { PresenceChannel } from "pusher-js";
-
-const config = useRuntimeConfig()
-const pusher = new Pusher(config.public.pusherApiKey, {
-  cluster: config.public.pusherCluster
-})
-const channelName = `presence-${id}`
-const channel = pusher.subscribe(channelName) as PresenceChannel
-function updateCount() { count.value = channel.members.count }
-channel.bind("pusher:subscription_succeeded", updateCount)
-channel.bind("pusher:member_added", updateCount)
-channel.bind("pusher:member_removed", updateCount)
-
-onUnmounted(() => {
-  pusher.unsubscribe(channelName)
-})
-
 const ranks = [
   "A",
   "2",
