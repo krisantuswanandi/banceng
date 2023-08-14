@@ -77,7 +77,7 @@ const shuffledDeck = deck
       <span v-else-if="count" class="font-bold text-red-500 ml-1">({{ count - 4 }})</span>
     </div>
     <RoomGame />
-    <div class="grid grid-cols-13 gap-2 max-w-[930px]">
+    <div class="grid grid-cols-13 gap-2 max-w-[1130px]">
       <CardPokerCard v-for="card in shuffledDeck" :rank="card.rank" :suit="card.suit" />
     </div>
   </ClientOnly>

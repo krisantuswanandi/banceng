@@ -14,7 +14,7 @@ function flipCard() {
 </script>
 
 <template>
-  <div @click="flipCard" class="card-outer cursor-pointer w-16 h-24" :class="faceUp ? '' : 'flipped'">
+  <div @click="flipCard" class="card-outer cursor-pointer w-20 h-32" :class="faceUp ? '' : 'flipped'">
     <div class="card-inner relative w-full h-full transition-transform duration-500 preserve-3d">
       <CardFront :rank="rank" :suit="suit" class="card card-front absolute inset-0" />
       <CardBack class="card card-back absolute inset-0" />
