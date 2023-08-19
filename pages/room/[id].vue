@@ -3,12 +3,12 @@ import { Suit } from "@/utils/card"
 
 const router = useRouter()
 const route = useRoute()
-const player = usePlayer()
+const { player } = usePlayer()
 
 const id = route.params.id
 const count = ref(0)
 
-if (!player.name.value) {
+if (!player.value) {
   router.push("/")
 }
 
@@ -58,7 +58,7 @@ const shuffledDeck = deck
       <span v-if="count >= 4" class="font-bold text-green-500 ml-1">(Ready)</span>
       <span v-else-if="count" class="font-bold text-red-500 ml-1">({{ count - 4 }})</span>
     </div>
-    <RoomGame />
+    <div>Hello, {{ player?.name }}</div>
     <div class="grid grid-cols-13 gap-2 max-w-[1130px]">
       <CardPokerCard v-for="card in shuffledDeck" :rank="card.rank" :suit="card.suit" />
     </div>
