@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nanoid } from "nanoid";
+import { ref as databaseRef, set } from "firebase/database"
 
 const router = useRouter()
 const player = usePlayer()
@@ -13,14 +14,37 @@ function joinRoom() {
   enterRoom(roomId.value)
 }
 
-function enterRoom(roomId: string) {
-  player.name.value = playerName.value
+function getPlayerRef() {
+  const db = useDatabase()
+  const user = useCurrentUser()
+  const playerRef = databaseRef(db, `players/${user.value?.uid}`)
 
+  return playerRef
+}
+
+async function enterRoom(roomId: string) {
+  const name = playerName.value
+  try {
+    await set(getPlayerRef(), {
+      name,
+      latestRoom: roomId,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+  player.name.value = name
   router.push(`/room/${roomId}`)
 }
 
 const playerName = ref("")
 const roomId = ref("")
+
+const userDb = useDatabaseObject<{ name: string }>(getPlayerRef(), { once: true })
+
+watch(userDb, (value) => {
+  if (value) { playerName.value = value.name }
+})
 
 useHead({
   bodyAttrs: {
