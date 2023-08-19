@@ -24,7 +24,7 @@ const roomId = ref("")
 
 watch(player, (value) => {
   if (value) { playerName.value = value.name }
-})
+}, { immediate: true })
 
 useHead({
   bodyAttrs: {

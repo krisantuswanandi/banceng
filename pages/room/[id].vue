@@ -46,12 +46,41 @@ const shuffledDeck = deck
   .map((card) => ({ ...card, order: Math.random() }))
   .sort((a, b) => a.order - b.order)
   .map((card) => ({ rank: card.rank, suit: card.suit }))
+
+import { ref as dbRef, set } from "firebase/database";
+
+const db = useDatabase();
+const roomRef = dbRef(db, `rooms/${id}`);
+
+const room = useDatabaseObject<any>(roomRef);
+
+watch(room, (value) => {
+  if (value) {
+    count.value = Object.keys(value.waitingRoom).length;
+  }
+}, { immediate: true })
+
+watch(player, value => {
+  if (value) {
+    const waitingRoomRef = dbRef(db, `rooms/${id}/waitingRoom/${value.id}`);
+    set(waitingRoomRef, true);
+  }
+}, { immediate: true })
+
+async function exit() {
+  if (player.value) {
+    const waitingRoomRef = dbRef(db, `rooms/${id}/waitingRoom/${player.value.id}`);
+    await set(waitingRoomRef, null);
+  }
+
+  router.push("/");
+}
 </script>
 
 <template>
   <ClientOnly>
     <div>
-      <NuxtLink to="/" class="text-sm text-blue underline">back to home</NuxtLink>
+      <button class="text-sm text-blue underline" @click="exit">exit room</button>
     </div>
     <div class="mb-4">
       <span>Room #{{ id }}</span>
