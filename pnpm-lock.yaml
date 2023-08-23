@@ -8,6 +8,9 @@ dependencies:
   '@unocss/reset':
     specifier: ^0.54.1
     version: 0.54.1
+  '@vercel/analytics':
+    specifier: ^1.0.2
+    version: 1.0.2
   firebase:
     specifier: ^10.1.0
     version: 10.1.0(react-native@0.72.4)
@@ -177,7 +180,7 @@ packages:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
       '@babel/core': 7.22.9
-      '@babel/helper-compilation-targets': 7.22.9(@babel/core@7.22.9)
+      '@babel/helper-compilation-targets': 7.22.10
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4
       lodash.debounce: 4.0.8
@@ -412,7 +415,7 @@ packages:
     dependencies:
       '@babel/compat-data': 7.22.9
       '@babel/core': 7.22.9
-      '@babel/helper-compilation-targets': 7.22.9(@babel/core@7.22.9)
+      '@babel/helper-compilation-targets': 7.22.10
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.22.9)
       '@babel/plugin-transform-parameters': 7.22.5(@babel/core@7.22.9)
@@ -742,7 +745,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.9
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-compilation-targets': 7.22.9(@babel/core@7.22.9)
+      '@babel/helper-compilation-targets': 7.22.10
       '@babel/helper-environment-visitor': 7.22.5
       '@babel/helper-function-name': 7.22.5
       '@babel/helper-optimise-call-expression': 7.22.5
@@ -855,7 +858,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
-      '@babel/helper-compilation-targets': 7.22.9(@babel/core@7.22.9)
+      '@babel/helper-compilation-targets': 7.22.10
       '@babel/helper-function-name': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
     dev: false
@@ -1125,7 +1128,7 @@ packages:
       '@babel/helper-module-imports': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.9)
-      '@babel/types': 7.22.5
+      '@babel/types': 7.22.10
     dev: false
 
   /@babel/plugin-transform-regenerator@7.22.10(@babel/core@7.22.9):
@@ -3724,6 +3727,10 @@ packages:
     transitivePeerDependencies:
       - rollup
     dev: true
+
+  /@vercel/analytics@1.0.2:
+    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+    dev: false
 
   /@vercel/nft@0.22.6:
     resolution: {integrity: sha512-gTsFnnT4mGxodr4AUlW3/urY+8JKKB452LwF3m477RFUJTAaDmcz2JqFuInzvdybYIeyIv1sSONEJxsxnbQ5JQ==}
@@ -7385,7 +7392,7 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@babel/traverse': 7.22.8
-      '@babel/types': 7.22.5
+      '@babel/types': 7.22.10
       invariant: 2.2.4
       metro-symbolicate: 0.76.7
       nullthrows: 1.1.1
@@ -7401,7 +7408,7 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@babel/traverse': 7.22.8
-      '@babel/types': 7.22.5
+      '@babel/types': 7.22.10
       invariant: 2.2.4
       metro-symbolicate: 0.76.8
       nullthrows: 1.1.1
@@ -7462,7 +7469,7 @@ packages:
       '@babel/core': 7.22.9
       '@babel/generator': 7.22.9
       '@babel/parser': 7.22.7
-      '@babel/types': 7.22.5
+      '@babel/types': 7.22.10
       babel-preset-fbjs: 3.4.0(@babel/core@7.22.9)
       metro: 0.76.7
       metro-babel-transformer: 0.76.7
@@ -7489,7 +7496,7 @@ packages:
       '@babel/parser': 7.22.7
       '@babel/template': 7.22.5
       '@babel/traverse': 7.22.8
-      '@babel/types': 7.22.5
+      '@babel/types': 7.22.10
       accepts: 1.3.8
       async: 3.2.4
       chalk: 4.1.2
